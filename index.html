@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Foodie | Delicious Food Delivered</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <!-- Google Font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+</head>
+
+<body>
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<header class="navbar">
+
+    <div class="nav-container">
+
+        <a href="#home" class="logo">
+            <span>🍔</span> Foodie
+        </a>
+
+        <nav id="navMenu">
+
+            <a href="#home">Home</a>
+            <a href="#categories">Categories</a>
+            <a href="#menu">Menu</a>
+            <a href="#offers">Offers</a>
+            <a href="#about">About</a>
+
+        </nav>
+
+        <div class="nav-actions">
+
+            <button
+                class="icon-btn"
+                onclick="scrollToSearch()"
+                title="Search"
+            >
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+
+            <button
+                class="cart-button"
+                onclick="openCart()"
+            >
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                <span>Cart</span>
+
+                <b id="cartCount">0</b>
+
+            </button>
+
+            <button
+                class="menu-toggle"
+                onclick="toggleMenu()"
+            >
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero" id="home">
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+
+        <span class="hero-small">
+            🔥 Fresh & Delicious
+        </span>
+
+        <h1>
+            Delicious Food
+            <br>
+            <span>Delivered To You</span>
+        </h1>
+
+        <p>
+            Order your favourite meals from the best
+            restaurants and enjoy delicious food at home.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a
+                href="#menu"
+                class="primary-btn"
+            >
+                Order Now
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+            <a
+                href="#offers"
+                class="secondary-btn"
+            >
+                View Offers
+            </a>
+
+        </div>
+
+        <div class="hero-stats">
+
+            <div>
+                <strong>10K+</strong>
+                <span>Happy Customers</span>
+            </div>
+
+            <div>
+                <strong>500+</strong>
+                <span>Food Items</span>
+            </div>
+
+            <div>
+                <strong>4.8 ⭐</strong>
+                <span>Customer Rating</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SEARCH
+===================================================== -->
+
+<section class="search-section" id="searchSection">
+
+    <div class="search-container">
+
+        <div class="search-box">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search for pizza, burger, biryani..."
+                oninput="searchFood()"
+            >
+
+            <button
+                onclick="clearSearch()"
+                id="clearSearch"
+            >
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CATEGORIES
+===================================================== -->
+
+<section
+    class="section"
+    id="categories"
+>
+
+    <div class="section-heading">
+
+        <div>
+            <span class="section-tag">
+                EXPLORE
+            </span>
+
+            <h2>Browse Categories</h2>
+        </div>
+
+    </div>
+
+    <div class="category-container">
+
+        <button
+            class="category-card active"
+            onclick="filterFood('all', this)"
+        >
+
+            <span class="category-icon">🍽️</span>
+
+            <strong>All</strong>
+
+            <small>Everything</small>
+
+        </button>
+
+        <button
+            class="category-card"
+            onclick="filterFood('pizza', this)"
+        >
+
+            <span class="category-icon">🍕</span>
+
+            <strong>Pizza</strong>
+
+            <small>12 items</small>
+
+        </button>
+
+        <button
+            class="category-card"
+            onclick="filterFood('burger', this)"
+        >
+
+            <span class="category-icon">🍔</span>
+
+            <strong>Burgers</strong>
+
+            <small>10 items</small>
+
+        </button>
+
+        <button
+            class="category-card"
+            onclick="filterFood('biryani', this)"
+        >
+
+            <span class="category-icon">🍛</span>
+
+            <strong>Biryani</strong>
+
+            <small>8 items</small>
+
+        </button>
+
+        <button
+            class="category-card"
+            onclick="filterFood('dessert', this)"
+        >
+
+            <span class="category-icon">🍰</span>
+
+            <strong>Desserts</strong>
+
+            <small>15 items</small>
+
+        </button>
+
+        <button
+            class="category-card"
+            onclick="filterFood('drink', this)"
+        >
+
+            <span class="category-icon">🥤</span>
+
+            <strong>Drinks</strong>
+
+            <small>9 items</small>
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     POPULAR FOOD
+===================================================== -->
+
+<section
+    class="section menu-section"
+    id="menu"
+>
+
+    <div class="section-heading">
+
+        <div>
+
+            <span class="section-tag">
+                OUR MENU
+            </span>
+
+            <h2>Popular Dishes</h2>
+
+            <p>
+                Customer favourites you don't want to miss.
+            </p>
+
+        </div>
+
+        <div class="sort-container">
+
+            <select
+                id="sortSelect"
+                onchange="sortFood()"
+            >
+
+                <option value="default">
+                    Sort By
+                </option>
+
+                <option value="low">
+                    Price: Low to High
+                </option>
+
+                <option value="high">
+                    Price: High to Low
+                </option>
+
+                <option value="rating">
+                    Highest Rated
+                </option>
+
+            </select>
+
+        </div>
+
+    </div>
+
+
+    <div
+        class="food-grid"
+        id="foodContainer"
+    >
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SPECIAL OFFER
+===================================================== -->
+
+<section
+    class="offer-section"
+    id="offers"
+>
+
+    <div class="offer-container">
+
+        <div class="offer-content">
+
+            <span class="offer-label">
+                🔥 LIMITED TIME OFFER
+            </span>
+
+            <h2>
+                Get 30% OFF
+                <br>
+                Your First Order!
+            </h2>
+
+            <p>
+                Use the coupon below and enjoy
+                delicious food at an amazing price.
+            </p>
+
+            <div class="coupon-display">
+
+                <span id="couponCode">
+                    FOODIE30
+                </span>
+
+                <button onclick="copyCoupon()">
+                    Copy
+                </button>
+
+            </div>
+
+            <small id="copyMessage"></small>
+
+        </div>
+
+        <div class="offer-image">
+            🍕
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     WHY CHOOSE US
+===================================================== -->
+
+<section class="section why-section">
+
+    <div class="section-heading center">
+
+        <span class="section-tag">
+            WHY FOODIE?
+        </span>
+
+        <h2>We Make Food Better</h2>
+
+        <p>
+            Everything you need for a great food experience.
+        </p>
+
+    </div>
+
+
+    <div class="features-grid">
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🚚
+            </div>
+
+            <h3>Fast Delivery</h3>
+
+            <p>
+                Get your favourite food delivered
+                quickly to your doorstep.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🥗
+            </div>
+
+            <h3>Fresh Food</h3>
+
+            <p>
+                We work with restaurants that
+                prepare fresh and delicious meals.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🔒
+            </div>
+
+            <h3>Secure Payment</h3>
+
+            <p>
+                Your payment information is
+                handled securely.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                ⭐
+            </div>
+
+            <h3>Best Quality</h3>
+
+            <p>
+                Highly-rated food and restaurants
+                for the best experience.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     ABOUT
+===================================================== -->
+
+<section
+    class="about-section"
+    id="about"
+>
+
+    <div class="about-container">
+
+        <div class="about-image">
+            🍔
+        </div>
+
+        <div class="about-content">
+
+            <span class="section-tag">
+                ABOUT US
+            </span>
+
+            <h2>
+                Your Favourite Food,
+                Just One Click Away
+            </h2>
+
+            <p>
+                Foodie is a modern food ordering platform
+                designed to make ordering your favourite
+                meals simple, fast and enjoyable.
+            </p>
+
+            <div class="about-points">
+
+                <div>
+                    <i class="fa-solid fa-circle-check"></i>
+                    Fresh ingredients
+                </div>
+
+                <div>
+                    <i class="fa-solid fa-circle-check"></i>
+                    Fast delivery
+                </div>
+
+                <div>
+                    <i class="fa-solid fa-circle-check"></i>
+                    Affordable prices
+                </div>
+
+                <div>
+                    <i class="fa-solid fa-circle-check"></i>
+                    Easy ordering
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="footer-container">
+
+        <div class="footer-brand">
+
+            <h2>🍔 Foodie</h2>
+
+            <p>
+                Delicious food delivered to your door.
+            </p>
+
+            <div class="social-icons">
+
+                <a href="#">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+
+                <a href="#">
+                    <i class="fa-brands fa-facebook"></i>
+                </a>
+
+                <a href="#">
+                    <i class="fa-brands fa-twitter"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div>
+
+            <h3>Quick Links</h3>
+
+            <a href="#home">Home</a>
+            <a href="#menu">Menu</a>
+            <a href="#offers">Offers</a>
+            <a href="#about">About</a>
+
+        </div>
+
+
+        <div>
+
+            <h3>Categories</h3>
+
+            <a href="#menu">Pizza</a>
+            <a href="#menu">Burgers</a>
+            <a href="#menu">Biryani</a>
+            <a href="#menu">Desserts</a>
+
+        </div>
+
+
+        <div>
+
+            <h3>Contact</h3>
+
+            <p>📍 Bengaluru, India</p>
+            <p>📞 +91 98765 43210</p>
+            <p>✉️ hello@foodie.com</p>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 Foodie. All Rights Reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<!-- =====================================================
+     CART MODAL
+===================================================== -->
+
+<div
+    class="modal-overlay"
+    id="cartModal"
+    onclick="closeCartOutside(event)"
+>
+
+    <div
+        class="cart-modal"
+        onclick="event.stopPropagation()"
+    >
+
+        <div class="modal-header">
+
+            <h2>
+                🛒 Your Cart
+            </h2>
+
+            <button onclick="closeCart()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+        </div>
+
+
+        <div
+            class="cart-items"
+            id="cartItems"
+        >
+        </div>
+
+
+        <div
+            class="empty-cart"
+            id="emptyCart"
+        >
+
+            <div>
+                🛒
+            </div>
+
+            <h3>
+                Your cart is empty
+            </h3>
+
+            <p>
+                Add some delicious food!
+            </p>
+
+            <button
+                class="primary-btn"
+                onclick="closeCart(); scrollToMenu();"
+            >
+                Browse Menu
+            </button>
+
+        </div>
+
+
+        <div
+            class="cart-summary"
+            id="cartSummary"
+        >
+
+            <div class="summary-row">
+
+                <span>Subtotal</span>
+
+                <strong>
+                    ₹<span id="subtotal">0</span>
+                </strong>
+
+            </div>
+
+
+            <div class="summary-row">
+
+                <span>Delivery Fee</span>
+
+                <strong>
+                    ₹<span id="deliveryFee">0</span>
+                </strong>
+
+            </div>
+
+
+            <div
+                class="coupon-row"
+                id="couponRow"
+            >
+
+                <input
+                    type="text"
+                    id="couponInput"
+                    placeholder="Coupon code"
+                >
+
+                <button onclick="applyCoupon()">
+                    Apply
+                </button>
+
+            </div>
+
+            <small
+                id="couponResult"
+                class="coupon-result"
+            ></small>
+
+
+            <div class="summary-total">
+
+                <span>Total</span>
+
+                <strong>
+                    ₹<span id="grandTotal">0</span>
+                </strong>
+
+            </div>
+
+
+            <button
+                class="checkout-button"
+                onclick="openCheckout()"
+            >
+
+                Proceed to Checkout
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     CHECKOUT MODAL
+===================================================== -->
+
+<div
+    class="modal-overlay"
+    id="checkoutModal"
+>
+
+    <div class="checkout-modal">
+
+        <div class="modal-header">
+
+            <h2>
+                Checkout
+            </h2>
+
+            <button onclick="closeCheckout()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+        </div>
+
+
+        <form
+            id="checkoutForm"
+            onsubmit="placeOrder(event)"
+        >
+
+            <div class="form-group">
+
+                <label>
+                    Full Name
+                </label>
+
+                <input
+                    type="text"
+                    id="customerName"
+                    placeholder="Enter your name"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Phone Number
+                </label>
+
+                <input
+                    type="tel"
+                    id="customerPhone"
+                    placeholder="Enter phone number"
+                    pattern="[0-9]{10}"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Delivery Address
+                </label>
+
+                <textarea
+                    id="customerAddress"
+                    placeholder="Enter your complete address"
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Payment Method
+                </label>
+
+                <select
+                    id="paymentMethod"
+                    required
+                >
+
+                    <option value="">
+                        Select payment method
+                    </option>
+
+                    <option value="cod">
+                        Cash on Delivery
+                    </option>
+
+                    <option value="upi">
+                        UPI
+                    </option>
+
+                    <option value="card">
+                        Credit / Debit Card
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="checkout-total">
+
+                <span>
+                    Amount to Pay
+                </span>
+
+                <strong>
+                    ₹<span id="checkoutTotal">0</span>
+                </strong>
+
+            </div>
+
+
+            <button
+                class="place-order-btn"
+                type="submit"
+            >
+
+                <i class="fa-solid fa-lock"></i>
+
+                Place Order Securely
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     ORDER SUCCESS MODAL
+===================================================== -->
+
+<div
+    class="modal-overlay"
+    id="successModal"
+>
+
+    <div class="success-modal">
+
+        <div class="success-animation">
+            ✓
+        </div>
+
+        <h2>
+            Order Placed Successfully! 🎉
+        </h2>
+
+        <p>
+            Thank you for ordering with Foodie.
+        </p>
+
+        <div class="order-number">
+
+            Order ID:
+            <strong id="orderId">
+                #FOOD12345
+            </strong>
+
+        </div>
+
+
+        <div class="tracking">
+
+            <div class="track-step active">
+
+                <span>✓</span>
+
+                <small>
+                    Order Placed
+                </small>
+
+            </div>
+
+            <div class="track-line active"></div>
+
+
+            <div class="track-step active">
+
+                <span>✓</span>
+
+                <small>
+                    Preparing
+                </small>
+
+            </div>
+
+            <div class="track-line"></div>
+
+
+            <div class="track-step">
+
+                <span>🚚</span>
+
+                <small>
+                    On the Way
+                </small>
+
+            </div>
+
+            <div class="track-line"></div>
+
+
+            <div class="track-step">
+
+                <span>🏠</span>
+
+                <small>
+                    Delivered
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <p class="delivery-time">
+            Estimated delivery:
+            <strong>
+                30–40 minutes
+            </strong>
+        </p>
+
+
+        <button
+            class="primary-btn"
+            onclick="closeSuccess()"
+        >
+            Continue Shopping
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     TOAST
+===================================================== -->
+
+<div
+    class="toast"
+    id="toast"
+>
+    <i class="fa-solid fa-circle-check"></i>
+
+    <span id="toastMessage">
+        Added to cart!
+    </span>
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
