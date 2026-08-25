@@ -29,4 +29,4 @@ Add screenshots of your application here.
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/food-ordering-app.git
+git clone https://github.com/Thanusha-09/food-ordering-app.git
